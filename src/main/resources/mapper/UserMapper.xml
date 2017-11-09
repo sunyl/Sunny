@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sunny.dao.UserDao">
+
+    <resultMap id="UserMap" type="cn.sunny.entity.User">
+        <id column="id" property="id" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="login_name" property="loginName" jdbcType="VARCHAR" javaType="String"/>
+        <result column="password" property="password" jdbcType="VARCHAR" javaType="String"/>
+        <result column="status" property="status" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="date" jdbcType="DATE" property="date" javaType="java.util.Date"/>
+    </resultMap>
+    <select id="getUser" parameterType="Integer" resultMap="UserMap">
+		select id,user_name,login_name,password,status,date from user_table where id =#{id}
+	</select>
+    <select id="login" parameterType="String" resultMap="UserMap">
+        select id,user_name,login_name,password,status,date from user_table where login_name =#{name} and password =#{password}
+    </select>
+    <select id="getUserList" resultMap="UserMap">
+		select id,user_name,login_name,password,status,date from user_table
+	</select>
+    <insert id="insertUser" parameterType="cn.sunny.entity.User">
+		insert into user_table(user_name,login_name,password,status,date)values(#{userName},#{loginName},#{password},#{status},#{date})
+	</insert>
+    <delete id="deleteUser" parameterType="Integer">
+		delete from user_table where id=#{id}
+	</delete>
+</mapper>

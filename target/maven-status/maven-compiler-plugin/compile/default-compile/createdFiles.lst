@@ -1,0 +1,5 @@
+cn\sunny\entity\User.class
+cn\sunny\service\UserService.class
+cn\sunny\controller\UserController.class
+cn\sunny\service\impl\UserServiceImpl.class
+cn\sunny\dao\UserDao.class
