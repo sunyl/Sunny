@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RedirectController {
 	
+	@RequestMapping("/")
+	public String index(HttpServletRequest request) {
+		return "index";
+	}
+	
 	@RequestMapping("/redirect_login")
 	public String login(HttpServletRequest request) {
 		return "page_user_login";

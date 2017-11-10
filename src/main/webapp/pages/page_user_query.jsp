@@ -7,6 +7,8 @@
 <title>用户查询</title>
 <jsp:include page="base/commonmeta.jsp" />
 <jsp:include page="base/commoncss.jsp" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/jquery/jquery-3.2.1.js"></script>
 </head>
 <body
 	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
@@ -36,24 +38,17 @@
 					<div class="row-fluid">
 						<div class="pull-right">
 							<div class="btn-group">
-								<button type="button" class="btn btn-primary btn-sm"
-									id="btn-add">
-									<i class="fa fa-plus">添加</i>
-									<sp:message code="sys.add" />
+								<button type="button" class="btn btn-primary btn-sm" id="btn-add">
+									<i class="fa fa-plus">添加</i>									
 								</button>
-								<button type="button" class="btn btn-primary btn-sm"
-									id="btn-delAll">
-									<i class="fa fa-remove">批量删除</i>
-									<sp:message code="sys.delAll" />
+								<button type="button" class="btn btn-primary btn-sm" id="btn-delAll">
+									<i class="fa fa-remove">批量删除</i>									
 								</button>
-								<button type="button" class="btn btn-primary btn-sm"
-									id="btn-export">
-									<i class="fa fa-sign-in">导出</i>
-									<sp:message code="sys.export" />
+								<button type="button" class="btn btn-primary btn-sm" id="btn-export">
+									<i class="fa fa-sign-in">导出</i>								
 								</button>
 								<button type="button" class="btn btn-primary btn-sm" id="btn-re">
-									<i class="fa fa-refresh">刷新</i>
-									<sp:message code="sys.refresh" />
+									<i class="fa fa-refresh">刷新</i>								
 								</button>
 							</div>
 						</div>
@@ -63,17 +58,13 @@
 									<input type="text" id="keyword" name="keyword" class="form-control input-sm"
 										placeholder="">
 								</div>
-								<button type="button" class="btn btn-primary btn-sm"
-									id="btn-query">
-									<i class="fa fa-search"></i>
-									<sp:message code="sys.query" />
+								<button type="button" class="btn btn-primary btn-sm" id="btn-query">
+								<i class="fa fa-search">查询</i>									
 								</button>
 							</form>
 						</div>
 					</div>
-					<table
-						class="table table-striped table-bordered table-hover table-condensed"
-						id="table_user" cellspacing="0" width="100%">
+					<table id="table-user" class="table table-striped table-bordered table-hover datatable" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th><input type="checkbox" name="cb-check-all"></th>
@@ -97,27 +88,12 @@
 	<jsp:include page="base/quicknav.jsp" />
 	<jsp:include page="base/commonjs.jsp" />
 	<script src="${pageContext.request.contextPath}/assets/pages/js/table_user_list.js" type="text/javascript"></script>
-	<%-- 	<script
-		src="${pageContext.request.contextPath}/assets/global/scripts/datatable.js"
-		type="text/javascript"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/global/plugins/datatables/datatables.min.js"
-		type="text/javascript"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js"
-		type="text/javascript"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/pages/scripts/table-datatables-managed.min.js"
-		type="text/javascript"></script> --%>
-	<%-- 	<script
-		src="${pageContext.request.contextPath}/assets/pages/scripts/constant.js"
-		type="text/javascript"></script>
-	<script
-		src="${pageContext.request.contextPath}/assets/pages/scripts/user-manage.js"
-		type="text/javascript"></script> --%>
-	<script type="text/javascript">
-	$(document).ready(function() {    
-		dengqiang(); 
+	<script src="${pageContext.request.contextPath}/assets/global/scripts/datatable.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>	
+	<script>
+	$(document).ready(function() {
+		dengqiang();
 	});
 	</script>
 </body>

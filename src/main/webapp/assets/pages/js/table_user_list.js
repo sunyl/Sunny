@@ -2,7 +2,7 @@ function dengqiang() {
     // 添加、修改异步提交地址
     var url = "";
 
-    var tables = $("#table_user").dataTable({
+    var tables = $("#table-user").dataTable({
         serverSide: true,// 分页，取数据等等的都放到服务端去
         processing: true,// 载入数据的时候是否显示“载入中”
         pageLength: 10,  // 首次加载的数据条数
@@ -13,7 +13,7 @@ function dengqiang() {
         searching: false,// 禁用datatables搜索
         ajax: {   
             type: "post",
-            url: "sunny/user/getUserList",
+            url: "user/getUserList",
             dataSrc: "data",
                data: function (d) {
                    var param = {};
@@ -35,7 +35,7 @@ function dengqiang() {
             {"data": 'password'},
             {"data": 'status'},
             {"data": 'date'},
-            {"data": null,"width":"60px"}
+            {"data": null,"width":"100px"}
         ],
         // 操作按钮
         columnDefs: [
@@ -84,7 +84,8 @@ function dengqiang() {
 
     // 添加
     $("#btn-add").on("click", function () {
-        url = "<%=path%>/goodsType/add";
+    	alert("添加");
+        url = "";
         $("input[name=typeId]").val(0);
         $("input[name=typeNameCn]").val("");
         $("input[name=typeNameEn]").val("");
@@ -103,11 +104,10 @@ function dengqiang() {
     });
 
     // 刷新
-   /* $("#btn-re").on("click", function () {
-    	alert("刷新");
-        tables.fnDraw(false);// 刷新保持分页状态
+   $("#btn-re").on("click", function () {    	
+        tables.fnDraw(false);
     });
-*/
+
     // checkbox全选
     $("#checkAll").on("click", function () {
         if ($(this).prop("checked") === true) {
@@ -127,7 +127,7 @@ function dengqiang() {
         $("input[name=typeNameCn]").val(data.typeNameCn);
         $("input[name=typeNameEn]").val(data.typeNameEn);
 
-        url = "<%=path%>/goodsType/update";
+        url = "";
 
         $("#editModal").modal("show");
     });
@@ -159,7 +159,7 @@ function dengqiang() {
         var data = tables.api().row($(this).parents("tr")).data();
         if(confirm("是否确认删除这条信息?")){
             $.ajax({
-                url:'<%=path%>/goodsType/del/'+data.typeIdStr,
+                url:"",
                 type:'delete',
                 dataType: "json",
                 cache: "false",
