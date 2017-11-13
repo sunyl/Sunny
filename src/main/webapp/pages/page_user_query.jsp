@@ -52,14 +52,14 @@
 								</button>
 							</div>
 						</div>
-						<div class="row">
+						<div class="row margin-top-15">
 							<form id="queryForm" action="" method="post">
 								<div class="col-xs-2">
 									<input type="text" id="keyword" name="keyword" class="form-control input-sm"
 										placeholder="">
 								</div>
 								<button type="button" class="btn btn-primary btn-sm" id="btn-query">
-								<i class="fa fa-search">查询</i>									
+								<i class="fa fa-search">查询</i>								
 								</button>
 							</form>
 						</div>
@@ -67,7 +67,7 @@
 					<table id="table-user" class="table table-striped table-bordered table-hover datatable" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th><input type="checkbox" name="cb-check-all"></th>
+								<th><input type="checkbox" name="cb-check-all" id="checkAll"></th>
 								<th>ID</th>
 								<th>用户名</th>
 								<th>登录名</th>
@@ -76,7 +76,7 @@
 								<th>日期</th>
 								<th>操作</th>
 							</tr>
-						</thead>						
+						</thead>				
 					</table>
 				</div>
 			</div>
@@ -85,7 +85,7 @@
 	</div>
 	<!-- END CONTAINER -->
 	<jsp:include page="base/footer.jsp" />
-	<jsp:include page="base/quicknav.jsp" />
+	<%-- <jsp:include page="base/quicknav.jsp" /> --%>
 	<jsp:include page="base/commonjs.jsp" />
 	<script src="${pageContext.request.contextPath}/assets/pages/js/table_user_list.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/assets/global/scripts/datatable.js" type="text/javascript"></script>

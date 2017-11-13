@@ -54,16 +54,24 @@ public class UserController {
 		return new ModelAndView(new MappingJackson2JsonView(), map);
 	}
 
-	@RequestMapping(value = "/getUserList")
-	public @ResponseBody String userAddAction(HttpServletRequest request) {
-		System.out.println("--->UserController:getUserList");
-		List<User> users = userService.getAllUser();		
-	    DatatablesView<User> dataTable=new DatatablesView<User>();
-	    dataTable.setData(users);
-	    dataTable.setRecordsFiltered(10);
-	    dataTable.setRecordsTotal(10);
-	    dataTable.setDraw(0);
-	    return JsonUtil.toJson(dataTable);   
+	@RequestMapping(value = "/getUserList",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String userAddAction(HttpServletRequest request) {
+		int draw = request.getParameter("draw") == null ? 1 : Integer.valueOf(request.getParameter("draw"));
+		int limit = request.getParameter("limit") == null ? 10 : Integer.valueOf(request.getParameter("limit"));
+		int start = request.getParameter("start") == null ? 0 : Integer.valueOf(request.getParameter("start"));
+		int page = request.getParameter("page") == null ? 1 : Integer.valueOf(request.getParameter("page"));
+		String search = request.getParameter("search");
+		System.out.println("--->UserController:getUserList limit = " + limit + ",start=" + start + ",page=" + page
+				+ ",draw=" + draw + ",search=" + search);
+
+		List<User> users = userService.getUserListByPage(start, limit, search);
+		DatatablesView<User> dataTable = new DatatablesView<User>();
+		dataTable.setData(users);
+		dataTable.setRecordsFiltered(userService.getCount(search));
+		dataTable.setRecordsTotal(users.size());
+		dataTable.setDraw(draw);				
+		return JsonUtil.toJson(dataTable);
 	}
 
 }

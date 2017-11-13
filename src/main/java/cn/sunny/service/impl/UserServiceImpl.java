@@ -28,4 +28,14 @@ public class UserServiceImpl implements UserService {
 	public int addUser(User user) {
 		return userDao.insertUser(user);
 	}
+
+	@Override
+	public List<User> getUserListByPage(int start, int limit,String keyword) {
+		return userDao.getUserListByPage(start, limit,keyword);
+	}
+
+	@Override
+	public int getCount(String keyword) {
+		return userDao.getCount(keyword);
+	}
 }

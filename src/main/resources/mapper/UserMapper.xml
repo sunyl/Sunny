@@ -8,7 +8,7 @@
         <result column="login_name" property="loginName" jdbcType="VARCHAR" javaType="String"/>
         <result column="password" property="password" jdbcType="VARCHAR" javaType="String"/>
         <result column="status" property="status" jdbcType="INTEGER" javaType="Integer"/>
-        <result column="date" jdbcType="DATE" property="date" javaType="java.util.Date"/>
+        <result column="date" property="date" jdbcType="DATE" javaType="java.sql.Date"/>
     </resultMap>
     <select id="getUser" parameterType="Integer" resultMap="UserMap">
 		select id,user_name,login_name,password,status,date from user_table where id =#{id}
@@ -19,10 +19,23 @@
     <select id="getUserList" resultMap="UserMap">
 		select id,user_name,login_name,password,status,date from user_table
 	</select>
+	<select id="getUserListByPage" resultMap="UserMap">
+		select id,user_name,login_name,password,status,date from user_table 
+		<if test="keyword != null and keyword !=''">
+			where user_name like CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR,javaType=String},'%'))
+		</if>
+		limit #{start},#{limit}
+	</select>
     <insert id="insertUser" parameterType="cn.sunny.entity.User">
 		insert into user_table(user_name,login_name,password,status,date)values(#{userName},#{loginName},#{password},#{status},#{date})
 	</insert>
     <delete id="deleteUser" parameterType="Integer">
 		delete from user_table where id=#{id}
-	</delete>
+	</delete>	
+	<select id="getCount" resultType="Integer">
+		select count(1) from user_table
+		<if test="keyword != null and keyword !=''">
+			where user_name like CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR,javaType=String},'%'))
+		</if>
+	</select>
 </mapper>

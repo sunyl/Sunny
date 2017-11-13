@@ -14,8 +14,12 @@ public interface UserDao {
     User login(@Param("name") String name, @Param("password") String password);
 
     List<User> getUserList();
+    
+    List<User> getUserListByPage(@Param("start") Integer start, @Param("limit") Integer limit, @Param("keyword") String keyword);
 
     int insertUser(User user);
 
     int deleteUser(int id);
+    
+    int getCount(@Param("keyword") String keyword);
 }

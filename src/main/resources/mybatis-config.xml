@@ -9,6 +9,7 @@
         <setting name="defaultExecutorType" value="REUSE"/>
         <setting name="lazyLoadingEnabled" value="true"/>
         <setting name="defaultStatementTimeout" value="25000"/>
+        <setting name="logImpl" value="STDOUT_LOGGING" />
     </settings>
 
     <typeAliases>

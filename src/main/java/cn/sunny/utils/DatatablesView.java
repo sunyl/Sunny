@@ -37,8 +37,7 @@ public class DatatablesView<T> {
     }
 
     public void setRecordsTotal(int recordsTotal) {
-        this.recordsTotal = recordsTotal;
-        this.recordsFiltered = recordsTotal;
+        this.recordsTotal = recordsTotal;        
     }
 
     public int getRecordsFiltered() {

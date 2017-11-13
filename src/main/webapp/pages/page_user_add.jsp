@@ -88,7 +88,7 @@
 				<!-- END PAGE BAR -->
 				<!-- BEGIN PAGE TITLE-->
 
-				<div class="margin-top-20">
+				<div class=" row margin-top-20">
 					<label class="col-sm-2 control-label" for="username">用户名:</label>
 					<div class="col-sm-4">
 						<input class="form-control" id="username" type="text"
@@ -99,7 +99,7 @@
 						<input class="form-control" id="status" type="number" name="status" />
 					</div>
 				</div>
-				<div class="margin-top-20">
+				<div class="row margin-top-20">
 					<label class="col-sm-2 control-label" for="loginname">登录名:</label>
 					<div class="col-sm-4">
 						<input class="form-control" id="loginname" type="text"
@@ -112,8 +112,8 @@
 					</div>
 				</div>
 
-				<div class="margin-top-20">
-					<div class="col-sm-offset-2 col-sm-10">
+				<div class="raw margin-top-20">
+					<div class="col-sm-offset-2">
 						<button type="submit" class="btn btn-default" id="btn_submit">提
 							交</button>
 					</div>
@@ -127,7 +127,7 @@
 	</div>
 
 	<jsp:include page="base/footer.jsp" />
-	<jsp:include page="base/quicknav.jsp" />
+	<%-- <jsp:include page="base/quicknav.jsp" /> --%>
 	<jsp:include page="base/commonjs.jsp" />
 </body>
 
