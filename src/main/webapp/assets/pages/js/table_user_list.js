@@ -96,11 +96,10 @@ function dengqiang() {
 
     // 添加
     $("#btn-add").on("click", function () {
-    	alert("添加");
-        url = "";
-        $("input[name=typeId]").val(0);
-        $("input[name=typeNameCn]").val("");
-        $("input[name=typeNameEn]").val("");
+    	$("input[name=userName]").val("");
+        $("input[name=loginName]").val("");
+        $("input[name=status]").val("");
+        $("input[name=password]").val("");
         $("#editModal").modal("show");
     });
 
@@ -132,59 +131,59 @@ function dengqiang() {
     });
 
     // 修改
-    $("#dataTable tbody").on("click", "#editRow", function () {
+    $("#table-user tbody").on("click", "#editRow", function () {   	
         var data = tables.api().row($(this).parents("tr")).data();
-        $("input[name=typeId]").val(data.typeIdStr);
         $("input[name=userName]").val(data.userName);
-        $("input[name=typeNameEn]").val(data.typeNameEn);
-
-        url = "";
-
+        $("input[name=loginName]").val(data.loginName);
+        $("input[name=status]").val(data.status);
+        $("input[name=password]").val(data.password);
+        
         $("#editModal").modal("show");
     });
 
     $("#btn-submit").on("click", function(){
-        $.ajax({
+    	alert("success");
+        /*$.ajax({
           cache: false,
           type: "POST",
           url: url,
           data:$("#editForm").serialize(),
           async: false,
           error: function(request) {
-              showFail("Server Connection Error...");
+        	  alert("Server Connection Error...");
           },
           success: function(data) {
             if(data.status == 1){
                 $("#editModal").modal("hide");
-                showSuccess("<sp:message code='sys.oper.success'/>");
+                alert("success");
                 tables.fnDraw();
             }else{
-                showFail("<sp:message code='sys.oper.fail'/>");
+                alert("fail");
             }
           }
-      });
+      });*/
     });
 
     // 删除
-    $("#dataTable tbody").on("click", "#delRow", function () {
-        var data = tables.api().row($(this).parents("tr")).data();
-        alert("删除data = "+data);
+    $("#table-user tbody").on("click", "#delRow", function () {
+        var data = tables.api().row($(this).parents("tr")).data();       
         if(confirm("是否确认删除这条信息?")){
             $.ajax({
-                url:"",
+                url:"user/deleteUser/"+data.id,
                 type:'delete',
-                dataType: "json",
+                contentType : 'application/json;charset=utf-8',
+                dataType: "json",               
                 cache: "false",
-                success:function(data){
-                    if(data.status == 1){
-                        showSuccess("删除失败");
-                        tables.api().row().remove().draw(false);
+                success:function(data){                	
+                    if(data){                    	
+                    	alert("删除成功");
+                        tables.api().row().remove().draw(true);
                     }else{
-                        showFail("删除成功");
+                    	alert("删除失败");
                     }
                 },
                 error:function(err){
-                    showFail(err);
+                	alert(err);
                 }
             });
         }

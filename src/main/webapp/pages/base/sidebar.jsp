@@ -75,10 +75,10 @@
 		</a>
 			<ul class="sub-menu">
 				<li class="nav-item  "><a
-					href="components_date_time_pickers.html" class="nav-link "> <span
+					href="/sunny/redirect_jobQuery" class="nav-link "> <span
 						class="title">职位查询</span>
 				</a></li>
-				<li class="nav-item  "><a href="components_color_pickers.html"
+				<li class="nav-item  "><a href="/sunny/redirect_jobAdd"
 					class="nav-link "> <span class="title">添加职位</span>
 				</a></li>
 			</ul></li>

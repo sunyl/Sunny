@@ -37,4 +37,14 @@ public class RedirectController {
 	public String departmentQuery(HttpServletRequest request) {
 		return "department_query";
 	}
+	
+	@RequestMapping("/redirect_jobAdd")
+	public String jobAdd(HttpServletRequest request) {
+		return "job_add";
+	}
+	
+	@RequestMapping("/redirect_jobQuery")
+	public String jobQuery(HttpServletRequest request) {
+		return "job_query";
+	}
 }

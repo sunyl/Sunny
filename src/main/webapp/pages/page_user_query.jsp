@@ -87,6 +87,53 @@
 	<jsp:include page="base/footer.jsp" />
 	<%-- <jsp:include page="base/quicknav.jsp" /> --%>
 	<jsp:include page="base/commonjs.jsp" />
+	
+	<!-- BEGIN CONTAINER -->
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					修改用户信息
+				</h4>
+			</div>
+
+			<div class="modal-body">
+					<table class="table">
+						<tbody>
+							<tr>
+								<label class="col-sm-2 control-label" for="userName">用户名:</label>
+								<input id="userName" name="userName" type="text" style="width: 250px" class="form-control" />
+							</tr>
+							
+							<tr>
+								<label class="col-sm-2 control-label" for="loginName">登录名:</label>								
+								<input id="loginName" name="loginName" type="text"style="width: 250px" class="form-control" />
+							</tr>
+							<tr>
+								<label class="col-sm-2 control-label" for="status">状态:</label>
+								<input id="status" name="status"
+									type="text" style="width: 250px" class="form-control" />
+							</tr>
+							<tr>								
+								<label class="col-sm-2 control-label" for="status">密码:</label>
+								<input id="password" name="password"
+									type="text" style="width: 250px" class="form-control" />
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				<button id="btn-submit" type="button" class="btn btn-primary">提交更改</button>
+			</div>
+		</div>
+	</div>
+	<!-- END CONTAINER -->
+	
 	<script src="${pageContext.request.contextPath}/assets/pages/js/table_user_list.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/assets/global/scripts/datatable.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>

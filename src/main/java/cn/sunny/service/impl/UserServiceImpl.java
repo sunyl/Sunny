@@ -38,4 +38,9 @@ public class UserServiceImpl implements UserService {
 	public int getCount(String keyword) {
 		return userDao.getCount(keyword);
 	}
+
+	@Override
+	public int deleteUser(Integer id) {
+		return userDao.deleteUser(id);
+	}
 }

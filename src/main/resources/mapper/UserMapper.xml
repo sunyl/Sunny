@@ -11,29 +11,29 @@
         <result column="date" property="date" jdbcType="DATE" javaType="java.sql.Date"/>
     </resultMap>
     <select id="getUser" parameterType="Integer" resultMap="UserMap">
-		select id,user_name,login_name,password,status,date from user_table where id =#{id}
+		select id,user_name,login_name,password,status,date from user where id =#{id}
 	</select>
     <select id="login" parameterType="String" resultMap="UserMap">
-        select id,user_name,login_name,password,status,date from user_table where login_name =#{name} and password =#{password}
+        select id,user_name,login_name,password,status,date from user where login_name =#{name} and password =#{password}
     </select>
     <select id="getUserList" resultMap="UserMap">
-		select id,user_name,login_name,password,status,date from user_table
+		select id,user_name,login_name,password,status,date from user
 	</select>
 	<select id="getUserListByPage" resultMap="UserMap">
-		select id,user_name,login_name,password,status,date from user_table 
+		select id,user_name,login_name,password,status,date from user 
 		<if test="keyword != null and keyword !=''">
 			where user_name like CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR,javaType=String},'%'))
 		</if>
-		limit #{start},#{limit}
+		limit #{start},#{size}
 	</select>
     <insert id="insertUser" parameterType="cn.sunny.entity.User">
-		insert into user_table(user_name,login_name,password,status,date)values(#{userName},#{loginName},#{password},#{status},#{date})
+		insert into user(user_name,login_name,password,status,date)values(#{userName},#{loginName},#{password},#{status},#{date})
 	</insert>
     <delete id="deleteUser" parameterType="Integer">
-		delete from user_table where id=#{id}
+		delete from user where id=#{id}
 	</delete>	
 	<select id="getCount" resultType="Integer">
-		select count(1) from user_table
+		select count(1) from user
 		<if test="keyword != null and keyword !=''">
 			where user_name like CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR,javaType=String},'%'))
 		</if>

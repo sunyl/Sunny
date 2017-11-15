@@ -17,4 +17,6 @@ public interface UserService {
 	int addUser(User user);
 
 	int getCount(String keyword);
+	
+	int deleteUser(Integer id);
 }
