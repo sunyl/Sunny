@@ -9,12 +9,14 @@ import cn.sunny.entity.Job;
 
 @Repository
 public interface JobDao {
-	
+
 	int insertJob(Job job);
 
 	int deleteJob(Integer id);
 
 	List<Job> getJobList(@Param("start") Integer start, @Param("size") Integer size, @Param("keyword") String keyword);
-	
+
 	int updateJob(Job job);
+
+	int getCount(@Param("keyword") String keyword);
 }

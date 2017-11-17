@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RedirectController {
 	
-	@RequestMapping("/")
+	@RequestMapping(value= {"/","/index"})
 	public String index(HttpServletRequest request) {
 		return "index";
 	}
@@ -46,5 +46,15 @@ public class RedirectController {
 	@RequestMapping("/redirect_jobQuery")
 	public String jobQuery(HttpServletRequest request) {
 		return "job_query";
+	}
+	
+	@RequestMapping("/redirect_employeeAdd")
+	public String employeeAdd(HttpServletRequest request) {
+		return "employee_add";
+	}
+	
+	@RequestMapping("/redirect_employeeQuery")
+	public String employeeQuery(HttpServletRequest request) {
+		return "employee_query";
 	}
 }

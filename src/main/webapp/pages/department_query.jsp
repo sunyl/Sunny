@@ -7,6 +7,8 @@
 <title>部门查询</title>
 <jsp:include page="base/commonmeta.jsp" />
 <jsp:include page="base/commoncss.jsp" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/jquery/jquery-3.2.1.js"></script>
 </head>
 <body
 	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
@@ -40,5 +42,11 @@
 	<!-- END CONTAINER -->
 	<jsp:include page="base/footer.jsp" />	
 	<jsp:include page="base/commonjs.jsp" />
+	<script src="${pageContext.request.contextPath}/assets/pages/js/sidebar.js" type="text/javascript"></script>	
+	<script>
+	$(document).ready(function() {
+		init_sidebar(1,0);
+	});
+	</script>
 </body>
 </html>

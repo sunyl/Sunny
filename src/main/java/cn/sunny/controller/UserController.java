@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import cn.sunny.entity.Job;
 import cn.sunny.entity.User;
+import cn.sunny.service.JobService;
 import cn.sunny.service.UserService;
 import cn.sunny.utils.DatatablesView;
 import cn.sunny.utils.JsonUtil;
@@ -30,6 +33,9 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	JobService jobService;
 
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
 	public ModelAndView loginCheck(HttpServletRequest request) {
@@ -37,16 +43,30 @@ public class UserController {
 		String password = request.getParameter("password");
 		System.out.println("--->loginCheck name:" + name + " password:" + password);
 		User user = userService.login(name, password);
+		ModelAndView modelView = new ModelAndView();
 		if (user == null) {
-			return new ModelAndView("page_user_login", "error", "用户名或密码错误");
+			modelView.setViewName("redirect:/redirect_login");			
+			modelView.addObject("error", "用户名或密码错误");
+			return modelView;
 		} else {
-			ModelAndView modelView = new ModelAndView();
-			request.getSession().setAttribute("user", user);
-			modelView.setViewName("index");
+			
+			HttpSession session = request.getSession();  
+            session.setAttribute("username", name);  
+            session.setMaxInactiveInterval(1800);
+			modelView.setViewName("redirect:/index");
 			return modelView;
 		}
 	}
-
+	
+	@RequestMapping(value="/logout")  
+    public ModelAndView logout(HttpSession session) throws Exception{  
+        session.invalidate();
+        ModelAndView modelView = new ModelAndView();
+        modelView.setViewName("redirect:/redirect_login");
+        return modelView;
+    }
+	
+	
 	@RequestMapping(value = "/userAddAction", method = RequestMethod.POST)
 	public @ResponseBody ModelAndView userAddAction(@RequestBody User user) {
 		System.out.println("--->UserController:userAddAction121212 username = " + user.toString());
@@ -59,7 +79,7 @@ public class UserController {
 
 	@RequestMapping(value = "/getUserList",produces="application/json;charset=utf-8")
 	@ResponseBody
-	public String userAddAction(HttpServletRequest request) {
+	public String getUserListAction(HttpServletRequest request) {
 		int draw = request.getParameter("draw") == null ? 1 : Integer.valueOf(request.getParameter("draw"));
 		int limit = request.getParameter("limit") == null ? 10 : Integer.valueOf(request.getParameter("limit"));
 		int start = request.getParameter("start") == null ? 0 : Integer.valueOf(request.getParameter("start"));
@@ -82,6 +102,34 @@ public class UserController {
 		System.out.println("--->deleteUser id = " + id);
 		int row = userService.deleteUser(id);
 		return new ResponseEntity<Boolean>(row > 0, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/jobAddAction", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView userJobAction(@RequestBody Job job) {
+		jobService.insertJob(job);		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("msg", "success");
+		return new ModelAndView(new MappingJackson2JsonView(), map);
+	}
+	
+	@RequestMapping(value = "/getJobList",produces="application/json;charset=utf-8")
+	@ResponseBody
+	public String getJobListAction(HttpServletRequest request) {
+		int draw = request.getParameter("draw") == null ? 1 : Integer.valueOf(request.getParameter("draw"));
+		int limit = request.getParameter("limit") == null ? 10 : Integer.valueOf(request.getParameter("limit"));
+		int start = request.getParameter("start") == null ? 0 : Integer.valueOf(request.getParameter("start"));
+		int page = request.getParameter("page") == null ? 1 : Integer.valueOf(request.getParameter("page"));
+		String search = request.getParameter("search");
+		System.out.println("--->UserController:getJobList limit = " + limit + ",start=" + start + ",page=" + page
+				+ ",draw=" + draw + ",search=" + search);
+
+		List<Job> jobs = jobService.getJobList(start, limit, search);
+		DatatablesView<Job> dataTable = new DatatablesView<Job>();
+		dataTable.setData(jobs);
+		dataTable.setRecordsFiltered(jobService.getCount(search));
+		dataTable.setRecordsTotal(jobs.size());
+		dataTable.setDraw(draw);				
+		return JsonUtil.toJson(dataTable);
 	}
 
 }

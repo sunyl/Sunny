@@ -128,6 +128,12 @@
 	<jsp:include page="base/footer.jsp" />
 	<%-- <jsp:include page="base/quicknav.jsp" /> --%>
 	<jsp:include page="base/commonjs.jsp" />
+	<script src="${pageContext.request.contextPath}/assets/pages/js/sidebar.js" type="text/javascript"></script>	
+	<script>
+	$(document).ready(function() {				
+		init_sidebar(0,1);
+		});
+	</script>
 </body>
 
 </html>

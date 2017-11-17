@@ -7,6 +7,44 @@
 <title>添加职位</title>
 <jsp:include page="base/commonmeta.jsp" />
 <jsp:include page="base/commoncss.jsp" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/jquery/jquery-3.2.1.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#btn_submit').click(function() {
+			if ($('#name').val() == "") {
+				alert("职位名称不能为空");
+				return;
+
+			}			
+			addJob();
+		});
+
+	})
+
+	function addJob() {
+		var str = {
+			"name" : $('#name').val(),
+			"remark" : $('#remark').val()		
+		};
+		$.ajax({
+			type : "POST",
+			url : "/sunny/user/jobAddAction",
+			data : JSON.stringify(str),
+			dataType : 'json',
+			contentType : "application/json;charset=utf-8",
+			success : function(data) {
+				alert("添加成功！");
+				$('#name').val("");
+				$('#remark').val("");
+			},
+			error : function(data) {
+				alert("添加失败！");
+			}
+		});
+	}
+</script>
 </head>
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 	<div class="page-wrapper">
@@ -53,5 +91,11 @@
 	<!-- END CONTAINER -->
 	<jsp:include page="base/footer.jsp" />	
 	<jsp:include page="base/commonjs.jsp" />
+	<script src="${pageContext.request.contextPath}/assets/pages/js/sidebar.js" type="text/javascript"></script>	
+	<script>
+	$(document).ready(function() {				
+		init_sidebar(2,1);
+		});
+	</script>
 </body>
 </html>

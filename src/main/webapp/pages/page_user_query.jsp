@@ -133,15 +133,16 @@
 		</div>
 	</div>
 	<!-- END CONTAINER -->
-	
+	<script src="${pageContext.request.contextPath}/assets/pages/js/sidebar.js" type="text/javascript"></script>	
 	<script src="${pageContext.request.contextPath}/assets/pages/js/table_user_list.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/assets/global/scripts/datatable.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>	
 	<script>
 	$(document).ready(function() {
-		dengqiang();
-	});
+		table_user();		
+		init_sidebar(0,0);
+		});
 	</script>
 </body>
 </html>

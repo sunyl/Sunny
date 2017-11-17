@@ -1,8 +1,8 @@
-function table_user() {
+function table_job() {
     // 添加、修改异步提交地址
     var url = "";
 
-    var tables = $("#table-user").dataTable({
+    var tables = $("#table-job").dataTable({
         serverSide: true,// 分页，取数据等等的都放到服务端去
         processing: true,// 载入数据的时候是否显示“载入中”       
         pageLength: 10,  // 首次加载的数据条数
@@ -23,7 +23,7 @@ function table_user() {
             param.orderby=data.orderBys;           
             $.ajax({
                 type: "post",
-                url: "user/getUserList",
+                url: "user/getJobList",
                 cache: false,
                 data: param,                
                 dataType: "json",
@@ -41,11 +41,8 @@ function table_user() {
         columns: [
             {"data": null,"width":"10px"},
             {"data": 'id'},
-            {"data": 'userName'},
-            {"data": 'loginName'},
-            {"data": 'password'},
-            {"data": 'status'},
-            {"data": 'date'},
+            {"data": 'name'},
+            {"data": 'remark'},
             {"data": null,"width":"100px"}
         ],
         // 操作按钮

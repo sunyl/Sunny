@@ -23,4 +23,10 @@
 	<update id="updateJob" parameterType="cn.sunny.entity.Job">
 		update job set name=#{name},remark=#{remark} where id=#{id}
 	</update>	
+	<select id="getCount" resultType="Integer">
+		select count(1) from job
+		<if test="keyword != null and keyword !=''">
+			where name like CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR,javaType=String},'%'))
+		</if>
+	</select>
 </mapper>

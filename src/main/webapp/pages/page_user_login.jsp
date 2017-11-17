@@ -18,7 +18,7 @@
 <body class=" login">
 	<!-- BEGIN LOGO -->
 	<div class="logo">
-		<a href=""> <img src="../assets/pages/img/logo-big.png"
+		<a href=""> <img src="${pageContext.request.contextPath}/assets/pages/img/logo-big.png"
 			alt="" />
 		</a>
 	</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sunny.dao.DeptDao">
+    <resultMap id="DeptMap" type="cn.sunny.entity.Dept">
+        <id column="id" property="id" jdbcType="INTEGER" javaType="Integer"/>
+        <result column="name" property="name" jdbcType="VARCHAR" javaType="String"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR" javaType="String"/>       
+    </resultMap>
+    
+	<insert id="insertDept" parameterType="cn.sunny.entity.Dept">
+		insert into dept(name,remark)values(#{name},#{remark})
+	</insert>
+	<select id="getDeptList" resultMap="DeptMap">
+		select id,name,remark from dept
+	</select>
+</mapper>
