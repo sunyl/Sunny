@@ -26,8 +26,8 @@ public class JobServiceImpl implements JobService{
 	}
 
 	@Override
-	public List<Job> getJobList(Integer start, Integer size, String keyword) {
-		return jobDao.getJobList(start, size, keyword);
+	public List<Job> getJobListByPage(Integer start, Integer size, String keyword) {
+		return jobDao.getJobListByPage(start, size, keyword);
 	}
 
 	@Override
@@ -38,6 +38,16 @@ public class JobServiceImpl implements JobService{
 	@Override
 	public int getCount(String keyword) {
 		return jobDao.getCount(keyword);
+	}
+
+	@Override
+	public Job getJob(Integer id) {
+		return jobDao.getJob(id);
+	}
+
+	@Override
+	public List<Job> getJobList() {
+		return jobDao.getJobList();
 	}
 
 }

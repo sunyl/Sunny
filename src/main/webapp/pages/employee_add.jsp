@@ -72,10 +72,8 @@ $(function() {
 					</div>
 					<label class="col-sm-2 control-label" for="sex-combobox">职位:</label>
 					<div class="col-sm-4">
-						<select id="job-combobox" class="selectpicker">
-					  		<option>请选择职位</option>
-					  		<option value="0">Java工程师</option>
-					  		<option value="1">大数据工程师</option>
+						<select id="job-combobox" class="form-control select2">					  	
+							<option>请选择职位</option>
 						</select>
 					</div>
 				</div>
@@ -87,6 +85,16 @@ $(function() {
 					<label class="col-sm-2 control-label" for="email">邮箱:</label>
 					<div class="col-sm-4">
 						<input class="form-control input-sm" id="email" type="text" name="email" />
+					</div>
+				</div>
+				<div class=" row margin-top-20">
+					<label class="col-sm-1 control-label" for="phone">手机:</label>
+					<div class="col-sm-4">
+						<input class="form-control input-sm" id="phone" type="number" name="phone" />
+					</div>
+					<label class="col-sm-2 control-label" for="tel">电话:</label>
+					<div class="col-sm-4">
+						<input class="form-control input-sm" id="tel" type="number" name="tel" />
 					</div>
 				</div>
 				<div class=" row margin-top-20">
@@ -136,11 +144,8 @@ $(function() {
 					</div>
 					<label class="col-sm-2 control-label" for="dept-combobox">所属部门:</label>
 					<div class="col-sm-4">
-						<select id="dept-combobox" class="selectpicker">
-					  		<option>部门选择</option>
-					  		<option value="0">市场部</option>
-					  		<option value="1">研发部</option>
-					  		<option value="2">测试部</option>
+						<select id="dept-combobox" class="form-control select2">
+						<option>选择部门</option>					  		
 						</select>
 					</div>
 				</div>
@@ -161,10 +166,18 @@ $(function() {
 	<jsp:include page="base/footer.jsp" />
 	<jsp:include page="base/commonjs.jsp" />
 	<script src="${pageContext.request.contextPath}/assets/pages/js/sidebar.js" type="text/javascript"></script>	
+	<script src="${pageContext.request.contextPath}/assets/pages/js/employee.js" type="text/javascript"></script>	
+	
 	<script>
 	$(document).ready(function() {						
 		init_sidebar(3, 1);
-		$('#sex-combobox').combobox();		
+		init_select();
+		$('#btn_submit').click(function() {
+			add_employee();				
+		});
+		$('#btn_cancel').click(function() {
+            clear();
+		});
 		});
 	</script>
 </body>

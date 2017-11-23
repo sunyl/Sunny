@@ -39,7 +39,7 @@
 	</div>
 	<!-- END CONTAINER -->
 	<jsp:include page="base/footer.jsp" />
-	<jsp:include page="base/quicknav.jsp" />
+	<%--<jsp:include page="base/quicknav.jsp" />--%>
 	<jsp:include page="base/commonjs.jsp" />
 </body>
 </html>

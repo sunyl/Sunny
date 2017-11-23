@@ -23,7 +23,7 @@ function table_job() {
             param.orderby=data.orderBys;           
             $.ajax({
                 type: "post",
-                url: "user/getJobList",
+                url: "user/getJobListByPage",
                 cache: false,
                 data: param,                
                 dataType: "json",

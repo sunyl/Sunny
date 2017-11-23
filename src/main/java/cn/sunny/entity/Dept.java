@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class Dept implements Serializable {
 	
 	private Integer id;// ID
-	private String name;// ²¿ÃÅÃû³Æ
-	private String remark;// ÏêÏ¸ÃèÊö
+	private String name;
+	private String remark;
 	
 	public Dept() {
 		

@@ -14,9 +14,13 @@ public interface JobDao {
 
 	int deleteJob(Integer id);
 
-	List<Job> getJobList(@Param("start") Integer start, @Param("size") Integer size, @Param("keyword") String keyword);
-
+	List<Job> getJobListByPage(@Param("start") Integer start, @Param("size") Integer size, @Param("keyword") String keyword);
+	
+	List<Job> getJobList();
+	
 	int updateJob(Job job);
 
 	int getCount(@Param("keyword") String keyword);
+
+	Job getJob(Integer id);
 }

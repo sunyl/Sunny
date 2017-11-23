@@ -8,26 +8,26 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Employee implements Serializable{
 	
 	private Integer id;
-	private Dept dept;//²¿ÃÅ
-	private Job job;//Ö°Î»
-	private String name;//ĞÕÃû
-	private String cardId;//Éí·İÖ¤
-	private String address;//µØÖ·
-	private String postCode;//ÓÊÕş±àÂë
-	private String tel;//µç»°
-	private String phone;//ÊÖ»ú
-	private String qqNum;//qq
-	private String email;//ÓÊÏä
-	private Integer sex;//ĞÔ±ğ
-	private String party;//ÕşÖÎÃæÃ²
+	private Dept dept;//éƒ¨é—¨
+	private Job job;//Ö°èŒä½
+	private String name;//å§“å
+	private String cardId;//èº«ä»½è¯å·ç 
+	private String address;//åœ°å€
+	private String postCode;//é‚®ç¼–
+	private String tel;//ç”µè¯å·ç 
+	private String phone;//æ‰‹æœºå·ç 
+	private String qqNum;//qqå·ç 
+	private String email;
+	private Integer sex;
+	private String party;//æ”¿æ²»é¢è²Œ
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date birthday;
-	private String race;//Ãû×å
-	private String education;//Ñ§Àú
-	private String speciality;//×¨Òµ
-	private String hobby;//°®ºÃ
-	private String remark;//±¸×¢
-	private Date createDate;//½¨µµÈÕÆÚ
+	private String race;//æ°‘æ—
+	private String education;//å­¦å†
+	private String speciality;//ä¸“ä¸š
+	private String hobby;//çˆ±å¥½
+	private String remark;
+	private Date createDate;//
 	
 	public Employee() {
 		

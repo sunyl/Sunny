@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class Job implements Serializable {
 	
-	private Integer id;// ID
-	private String name;// Ö°Î»Ãû³Æ
-	private String remark;// ÏêÏ¸ÃèÊö
+	private Integer id;
+	private String name;
+	private String remark;
 
 	public Job() {
 		

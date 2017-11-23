@@ -10,9 +10,13 @@ public interface JobService {
 
 	int deleteJob(Integer id);
 
-	List<Job> getJobList(Integer start, Integer size, String keyword);
-
+	List<Job> getJobListByPage(Integer start, Integer size, String keyword);
+	
+	List<Job> getJobList();
+	
 	int updateJob(Job job);
 	
 	int getCount(String keyword);
+
+	Job getJob(Integer id);
 }

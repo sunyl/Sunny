@@ -8,8 +8,8 @@ public class Notice implements Serializable {
 	private Integer id;
 	private String title;
 	private String content;
-	private Date createDate;// 发布日期
-	private User user;// 发布人
+	private Date createDate;
+	private User user;
 	
 	public Notice() {
 		

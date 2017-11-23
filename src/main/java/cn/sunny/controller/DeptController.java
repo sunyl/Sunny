@@ -19,7 +19,6 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import cn.sunny.entity.Dept;
 import cn.sunny.service.DeptService;
-import cn.sunny.utils.JsonUtil;
 
 @Controller
 @RequestMapping("/dept")
@@ -37,11 +36,11 @@ public class DeptController {
 		return new ModelAndView(new MappingJackson2JsonView(), map);
 	}
 	
-	@RequestMapping(value = "/getDeptList", method = RequestMethod.POST)
+	@RequestMapping(value = "/getDeptList", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<List<Dept>> getDeptList(HttpServletRequest request) {
 		System.out.println("--->getDeptList getDeptList");
-		List<Dept> list=deptService.getDeptList();
+		List<Dept> list = deptService.getDeptList();
 		return new ResponseEntity<List<Dept>>(list, HttpStatus.OK);
 	}
 }

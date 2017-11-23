@@ -9,4 +9,6 @@ public interface DeptService {
 	int insertDept(Dept dept);
 
 	List<Dept> getDeptList();
+
+	Dept getDept(Integer id);
 }

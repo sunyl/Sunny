@@ -112,9 +112,9 @@ public class UserController {
 		return new ModelAndView(new MappingJackson2JsonView(), map);
 	}
 	
-	@RequestMapping(value = "/getJobList",produces="application/json;charset=utf-8")
+	@RequestMapping(value = "/getJobListByPage",produces="application/json;charset=utf-8",method = RequestMethod.POST)
 	@ResponseBody
-	public String getJobListAction(HttpServletRequest request) {
+	public String getJobListByPage(HttpServletRequest request) {
 		int draw = request.getParameter("draw") == null ? 1 : Integer.valueOf(request.getParameter("draw"));
 		int limit = request.getParameter("limit") == null ? 10 : Integer.valueOf(request.getParameter("limit"));
 		int start = request.getParameter("start") == null ? 0 : Integer.valueOf(request.getParameter("start"));
@@ -123,7 +123,7 @@ public class UserController {
 		System.out.println("--->UserController:getJobList limit = " + limit + ",start=" + start + ",page=" + page
 				+ ",draw=" + draw + ",search=" + search);
 
-		List<Job> jobs = jobService.getJobList(start, limit, search);
+		List<Job> jobs = jobService.getJobListByPage(start, limit, search);
 		DatatablesView<Job> dataTable = new DatatablesView<Job>();
 		dataTable.setData(jobs);
 		dataTable.setRecordsFiltered(jobService.getCount(search));
@@ -131,5 +131,11 @@ public class UserController {
 		dataTable.setDraw(draw);				
 		return JsonUtil.toJson(dataTable);
 	}
-
+	
+	@RequestMapping(value = "/getJobList",produces="application/json;charset=utf-8",method = RequestMethod.GET)
+	@ResponseBody
+	public String getJobList(HttpServletRequest request) {
+		List<Job> jobs = jobService.getJobList();				
+		return JsonUtil.toJson(jobs);
+	}
 }

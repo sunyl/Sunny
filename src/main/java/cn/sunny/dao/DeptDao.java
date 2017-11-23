@@ -8,8 +8,10 @@ import cn.sunny.entity.Dept;
 
 @Repository
 public interface DeptDao {
-	
-	int insertDept(Dept dept);
-	
-	List<Dept> getDeptList();
+
+    int insertDept(Dept dept);
+
+    List<Dept> getDeptList();
+
+    Dept getDept(Integer id);
 }
