@@ -3,10 +3,14 @@ package cn.sunny.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Employee implements Serializable{
-	
+
+	@JsonIgnore
+	private Object handler;
+
 	private Integer id;
 	private Dept dept;//部门
 	private Job job;//ְ职位
@@ -18,7 +22,7 @@ public class Employee implements Serializable{
 	private String phone;//手机号码
 	private String qqNum;//qq号码
 	private String email;
-	private Integer sex;
+	private Integer sex;//0:男 1:女
 	private String party;//政治面貌
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date birthday;
@@ -27,10 +31,18 @@ public class Employee implements Serializable{
 	private String speciality;//专业
 	private String hobby;//爱好
 	private String remark;
-	private Date createDate;//
-	
+	private Date createDate;
+
 	public Employee() {
-		
+
+	}
+
+	public Object getHandler() {
+		return handler;
+	}
+
+	public void setHandler(Object handler) {
+		this.handler = handler;
 	}
 
 	public Integer getId() {
@@ -192,6 +204,6 @@ public class Employee implements Serializable{
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
-	
+
+
 }

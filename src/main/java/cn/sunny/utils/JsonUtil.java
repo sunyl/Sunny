@@ -12,15 +12,13 @@ public class JsonUtil {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(JsonUtil.class);
 
-	private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+	private static  ObjectMapper OBJECT_MAPPER;
 
-	/**
-	 * 将 POJO 转换为 JSON
-	 */
 	public static <T> String toJson(T obj) {
-		String json;
 
+		String json;
 		try {
+			OBJECT_MAPPER = new ObjectMapper();
 			json = OBJECT_MAPPER.writeValueAsString(obj);
 		} catch (JsonProcessingException e) {
 			LOGGER.error("convert POJO to JSON failure", e);
@@ -30,9 +28,6 @@ public class JsonUtil {
 		return json;
 	}
 
-	/**
-	 * 将 JSON 转换为 POJO
-	 */
 	public static <T> T fromJson(String json, Class<T> type) {
 		T pojo;
 		try {

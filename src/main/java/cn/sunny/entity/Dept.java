@@ -3,15 +3,15 @@ package cn.sunny.entity;
 import java.io.Serializable;
 
 public class Dept implements Serializable {
-	
-	private Integer id;// ID
+
+	private Integer id;
 	private String name;
 	private String remark;
-	
+
 	public Dept() {
-		
+
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}

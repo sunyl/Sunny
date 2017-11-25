@@ -1,6 +1,4 @@
 function table_user() {
-    // 添加、修改异步提交地址
-    var url = "";
 
     var tables = $("#table-user").dataTable({
         serverSide: true,// 分页，取数据等等的都放到服务端去

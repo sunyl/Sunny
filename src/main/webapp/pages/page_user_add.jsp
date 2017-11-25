@@ -64,7 +64,6 @@
 		<jsp:include page="base/header.jsp" />
 	</div>
 	<div class="clearfix"></div>
-
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->

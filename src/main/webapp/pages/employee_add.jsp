@@ -65,15 +65,15 @@ $(function() {
 					<label class="col-sm-1 control-label" for="sex-combobox">性别:</label>
 					<div class="col-sm-4">
 						<select id="sex-combobox" class="selectpicker">
-						  <option>请选择性别</option>
+						  <option value="-1">请选择性别</option>
 						  <option value="0">男</option>
 						  <option value="1">女</option>
 						</select>
 					</div>
-					<label class="col-sm-2 control-label" for="sex-combobox">职位:</label>
+					<label class="col-sm-2 control-label" for="job-combobox">职位:</label>
 					<div class="col-sm-4">
 						<select id="job-combobox" class="form-control select2">					  	
-							<option>请选择职位</option>
+							<option value="0">请选择职位</option>
 						</select>
 					</div>
 				</div>
@@ -145,7 +145,7 @@ $(function() {
 					<label class="col-sm-2 control-label" for="dept-combobox">所属部门:</label>
 					<div class="col-sm-4">
 						<select id="dept-combobox" class="form-control select2">
-						<option>选择部门</option>					  		
+						<option value="0">选择部门</option>
 						</select>
 					</div>
 				</div>

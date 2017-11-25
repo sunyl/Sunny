@@ -12,5 +12,9 @@ public interface EmployeeDao {
 
     int insertEmployee(Employee employee);
 
-    List<Employee> getEmployeeList(@Param("start") Integer start, @Param("size") Integer size, @Param("keyword") String keyword);
+    List<Employee> getEmployeeList(@Param("start") Integer start, @Param("size") Integer size, @Param("keyword") String keyword, @Param("dept_id") Integer dept_id, @Param("job_id") Integer job_id);
+
+    int getCount(@Param("keyword") String keyword, @Param("dept_id") Integer dept_id, @Param("job_id") Integer job_id);
+
+    int deleteEmployee(Integer id);
 }
