@@ -18,7 +18,7 @@ function init_select() {
 
     $.ajax({
         type: "GET",
-        url: "/sunny/user/getJobList",
+        url: "/sunny/job/getJobList",
         dataType: 'json',
         success: function (data) {
             $.each(data, function (i) {

@@ -9,53 +9,6 @@
 <jsp:include page="base/commoncss.jsp" />
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/jquery/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/jquery/jquery-3.2.1.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('#btn_submit').click(function() {
-			if ($('#username').val() == "") {
-				alert("用户名不能为空");
-				return;
-
-			}
-			if ($('#status').val() == "") {
-				alert("状态不能为空");
-				return;
-			}
-			if ($('#loginname').val() == "") {
-				alert("登录名不能为空");
-				return;
-			}
-			if ($('#password').val() == "") {
-				alert("密码不能为空");
-				return;
-			}
-			addUser();
-		});
-
-	})
-
-	function addUser() {
-		var str = {
-			"userName" : $('#username').val(),
-			"loginName" : $('#loginname').val(),
-			"status" : $('#status').val(),
-			"password" : $('#password').val()
-		};
-		$.ajax({
-			type : "POST",
-			url : "/sunny/user/userAddAction",
-			data : JSON.stringify(str),
-			dataType : 'json',
-			contentType : "application/json;charset=utf-8",
-			success : function(data) {
-				alert("添加成功！");
-			},
-			error : function(data) {
-				alert("添加失败！");
-			}
-		});
-	}
-</script>
 </head>
 
 <body
@@ -127,10 +80,14 @@
 	<jsp:include page="base/footer.jsp" />
 	<%-- <jsp:include page="base/quicknav.jsp" /> --%>
 	<jsp:include page="base/commonjs.jsp" />
+	<script src="${pageContext.request.contextPath}/assets/pages/js/table_user_list.js" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath}/assets/pages/js/sidebar.js" type="text/javascript"></script>	
 	<script>
 	$(document).ready(function() {				
 		init_sidebar(0,1);
+        $('#btn_submit').click(function() {
+            addUser();
+        });
 		});
 	</script>
 </body>

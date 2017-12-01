@@ -32,28 +32,32 @@
     </insert>
     <select id="getEmployeeList" resultMap="EmployeeMap">
         select * from employee
-        <if test="keyword != null and keyword !=''">
-            where name like CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR,javaType=String},'%'))
-        </if>
-        <if test="dept_id >0">
-            AND dept_id = #{dept_id}
-        </if>
-        <if test="job_id >0">
-            AND job_id = #{job_id}
-        </if>
+        <where>
+            <if test="keyword != null and keyword !=''">
+                name like CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR,javaType=String},'%'))
+            </if>
+            <if test="dept_id >0">
+                AND dept_id = #{dept_id}
+            </if>
+            <if test="job_id >0">
+                AND job_id = #{job_id}
+            </if>
+        </where>
         limit #{start},#{size}
     </select>
     <select id="getCount" resultType="Integer">
         select count(1) from employee
-        <if test="keyword != null and keyword !=''">
-            where name like CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR,javaType=String},'%'))
-        </if>
-        <if test="dept_id >0">
-            AND dept_id = #{dept_id}
-        </if>
-        <if test="job_id >0">
-            AND job_id = #{job_id}
-        </if>
+        <where>
+            <if test="keyword != null and keyword !=''">
+                name like CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR,javaType=String},'%'))
+            </if>
+            <if test="dept_id >0">
+                AND dept_id = #{dept_id}
+            </if>
+            <if test="job_id >0">
+                AND job_id = #{job_id}
+            </if>
+        </where>
     </select>
     <delete id="deleteEmployee" parameterType="Integer">
         delete from employee where id=#{id}

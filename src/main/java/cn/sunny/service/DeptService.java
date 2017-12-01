@@ -8,7 +8,13 @@ public interface DeptService {
 	
 	int insertDept(Dept dept);
 
+	List<Dept> getDeptListByPage(Integer start,Integer size);
+
 	List<Dept> getDeptList();
 
 	Dept getDept(Integer id);
+
+	int getCount();
+
+	int deleteDept(Integer id);
 }

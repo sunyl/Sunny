@@ -1,6 +1,5 @@
-function table_user() {
-
-    var tables = $("#table-user").dataTable({
+function table_department() {
+    var tables = $("#table-department").dataTable({
         serverSide: true,// 分页，取数据等等的都放到服务端去
         processing: true,// 载入数据的时候是否显示“载入中”       
         pageLength: 10,  // 首次加载的数据条数
@@ -21,7 +20,7 @@ function table_user() {
             param.orderby = data.orderBys;
             $.ajax({
                 type: "post",
-                url: "user/getUserList",
+                url: "dept/getDeptListByPage",
                 cache: false,
                 data: param,
                 dataType: "json",
@@ -37,13 +36,9 @@ function table_user() {
             });
         },
         columns: [
-            {"data": null, "width": "10px"},
             {"data": 'id'},
-            {"data": 'userName'},
-            {"data": 'loginName'},
-            {"data": 'password'},
-            {"data": 'status'},
-            {"data": 'date'},
+            {"data": 'name'},
+            {"data": 'remark'},
             {"data": null, "width": "100px"}
         ],
         // 操作按钮
@@ -55,7 +50,6 @@ function table_user() {
             {
                 targets: -1,
                 defaultContent: "<div class='btn-group'>" +
-                "<button id='editRow' class='btn btn-primary btn-sm' type='button'><i class='fa fa-edit'></i></button>" +
                 "<button id='delRow' class='btn btn-primary btn-sm' type='button'><i class='fa fa-trash-o'></i></button>" +
                 "</div>"
             }
@@ -87,87 +81,13 @@ function table_user() {
         },
 
     });
-    // 查询按钮
-    $("#btn-query").on("click", function () {
-        tables.fnDraw();
-    });
-
-    // 添加
-    $("#btn-add").on("click", function () {
-        $("input[name=userName]").val("");
-        $("input[name=loginName]").val("");
-        $("input[name=status]").val("");
-        $("input[name=password]").val("");
-        $("#editModal").modal("show");
-    });
-
-    // 批量删除
-    $("#btn-delAll").on("click", function () {
-        alert("批量是删除");
-    });
-
-    // 导出
-    $("#btn-export").on("click", function () {
-        alert("导出");
-    });
-
-    // 刷新
-    $("#btn-re").on("click", function () {
-        tables.fnDraw(false);
-    });
-
-    // checkbox全选
-    $("#checkAll").on("click", function () {
-        if ($(this).prop("checked") === true) {
-            $("input[name='checkList']").prop("checked", $(this).prop("checked"));
-            // $("#dataTable tbody tr").addClass('selected');
-            $(this).hasClass('selected')
-        } else {
-            $("input[name='checkList']").prop("checked", false);
-            $("#dataTable tbody tr").removeClass('selected');
-        }
-    });
-
-    // 修改
-    $("#table-user tbody").on("click", "#editRow", function () {
-        var data = tables.api().row($(this).parents("tr")).data();
-        $("input[name=userName]").val(data.userName);
-        $("input[name=loginName]").val(data.loginName);
-        $("input[name=status]").val(data.status);
-        $("input[name=password]").val(data.password);
-
-        $("#editModal").modal("show");
-    });
-
-    $("#btn-submit").on("click", function () {
-        alert("success");
-        /*$.ajax({
-          cache: false,
-          type: "POST",
-          url: url,
-          data:$("#editForm").serialize(),
-          async: false,
-          error: function(request) {
-        	  alert("Server Connection Error...");
-          },
-          success: function(data) {
-            if(data.status == 1){
-                $("#editModal").modal("hide");
-                alert("success");
-                tables.fnDraw();
-            }else{
-                alert("fail");
-            }
-          }
-      });*/
-    });
 
     // 删除
-    $("#table-user tbody").on("click", "#delRow", function () {
+    $("#table-department tbody").on("click", "#delRow", function () {
         var data = tables.api().row($(this).parents("tr")).data();
         if (confirm("是否确认删除这条信息?")) {
             $.ajax({
-                url: "user/deleteUser/" + data.id,
+                url: "dept/deleteDept/" + data.id,
                 type: 'delete',
                 contentType: 'application/json;charset=utf-8',
                 dataType: "json",
@@ -188,40 +108,26 @@ function table_user() {
     });
 }
 
-function addUser() {
-
-    if ($('#username').val() == "") {
-        alert("用户名不能为空");
+function addDept() {
+    if ($('#name').val() == "") {
+        alert("部门名称不能为空");
         return;
 
     }
-    if ($('#status').val() == "") {
-        alert("状态不能为空");
-        return;
-    }
-    if ($('#loginname').val() == "") {
-        alert("登录名不能为空");
-        return;
-    }
-    if ($('#password').val() == "") {
-        alert("密码不能为空");
-        return;
-    }
-
     var str = {
-        "userName": $('#username').val(),
-        "loginName": $('#loginname').val(),
-        "status": $('#status').val(),
-        "password": $('#password').val()
+        "name": $('#name').val(),
+        "remark": $('#remark').val()
     };
     $.ajax({
         type: "POST",
-        url: "/sunny/user/userAddAction",
+        url: "/sunny/dept/deptAddAction",
         data: JSON.stringify(str),
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
         success: function (data) {
             alert("添加成功！");
+            $('#name').val("");
+            $('#remark').val("");
         },
         error: function (data) {
             alert("添加失败！");

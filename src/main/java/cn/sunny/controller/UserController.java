@@ -8,9 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import cn.sunny.entity.Job;
 import cn.sunny.entity.User;
-import cn.sunny.service.JobService;
 import cn.sunny.service.UserService;
 import cn.sunny.utils.DatatablesView;
 import cn.sunny.utils.JsonUtil;
@@ -33,9 +31,6 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
-    @Autowired
-    JobService jobService;
 
     @RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
     public ModelAndView loginCheck(HttpServletRequest request) {
@@ -105,39 +100,4 @@ public class UserController {
         return new ResponseEntity<Boolean>(row > 0, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/jobAddAction", method = RequestMethod.POST)
-    public @ResponseBody
-    ModelAndView userJobAction(@RequestBody Job job) {
-        jobService.insertJob(job);
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("msg", "success");
-        return new ModelAndView(new MappingJackson2JsonView(), map);
-    }
-
-    @RequestMapping(value = "/getJobListByPage", produces = "application/json;charset=utf-8", method = RequestMethod.POST)
-    @ResponseBody
-    public String getJobListByPage(HttpServletRequest request) {
-        int draw = request.getParameter("draw") == null ? 1 : Integer.valueOf(request.getParameter("draw"));
-        int limit = request.getParameter("limit") == null ? 10 : Integer.valueOf(request.getParameter("limit"));
-        int start = request.getParameter("start") == null ? 0 : Integer.valueOf(request.getParameter("start"));
-        int page = request.getParameter("page") == null ? 1 : Integer.valueOf(request.getParameter("page"));
-        String search = request.getParameter("search");
-        System.out.println("--->UserController:getJobList limit = " + limit + ",start=" + start + ",page=" + page
-                + ",draw=" + draw + ",search=" + search);
-
-        List<Job> jobs = jobService.getJobListByPage(start, limit, search);
-        DatatablesView<Job> dataTable = new DatatablesView<Job>();
-        dataTable.setData(jobs);
-        dataTable.setRecordsFiltered(jobService.getCount(search));
-        dataTable.setRecordsTotal(jobs.size());
-        dataTable.setDraw(draw);
-        return JsonUtil.toJson(dataTable);
-    }
-
-    @RequestMapping(value = "/getJobList", method = RequestMethod.GET)
-    @ResponseBody
-    public String getJobList(HttpServletRequest request) {
-        List<Job> jobs = jobService.getJobList();
-        return JsonUtil.toJson(jobs);
-    }
 }

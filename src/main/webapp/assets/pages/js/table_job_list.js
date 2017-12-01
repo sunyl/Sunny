@@ -23,7 +23,7 @@ function table_job() {
             param.orderby=data.orderBys;           
             $.ajax({
                 type: "post",
-                url: "user/getJobListByPage",
+                url: "job/getJobListByPage",
                 cache: false,
                 data: param,                
                 dataType: "json",
@@ -162,27 +162,53 @@ function table_job() {
     });
 
     // 删除
-    $("#table-user tbody").on("click", "#delRow", function () {
+    $("#table-job tbody").on("click", "#delRow", function () {
         var data = tables.api().row($(this).parents("tr")).data();       
         if(confirm("是否确认删除这条信息?")){
             $.ajax({
-                url:"user/deleteUser/"+data.id,
+                url:"job/deleteJob/"+data.id,
                 type:'delete',
                 contentType : 'application/json;charset=utf-8',
                 dataType: "json",               
                 cache: "false",
                 success:function(data){                	
                     if(data){                    	
-                    	alert("删除成功");
+                    	alert("删除职位成功");
                         tables.api().row().remove().draw(true);
                     }else{
-                    	alert("删除失败");
+                    	alert("删除职位失败");
                     }
                 },
                 error:function(err){
                 	alert(err);
                 }
             });
+        }
+    });
+}
+
+function addJob() {
+    if ($('#name').val() == "") {
+        alert("职位名称不能为空");
+        return;
+    }
+    var str = {
+        "name" : $('#name').val(),
+        "remark" : $('#remark').val()
+    };
+    $.ajax({
+        type : "POST",
+        url : "/sunny/job/jobAddAction",
+        data : JSON.stringify(str),
+        dataType : 'json',
+        contentType : "application/json;charset=utf-8",
+        success : function(data) {
+            alert("添加成功！");
+            $('#name').val("");
+            $('#remark').val("");
+        },
+        error : function(data) {
+            alert("添加失败！");
         }
     });
 }

@@ -4,6 +4,9 @@ import cn.sunny.dao.UserDao;
 import cn.sunny.entity.User;
 import cn.sunny.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,6 +28,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@CachePut(value="user",key="#user.userName")
 	public int addUser(User user) {
 		return userDao.insertUser(user);
 	}
@@ -35,11 +39,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Cacheable(value="user",key="'user_count_'+#keyword")
 	public int getCount(String keyword) {
 		return userDao.getCount(keyword);
 	}
 
 	@Override
+	@CacheEvict(value="user",key="'id_'+#id")
 	public int deleteUser(Integer id) {
 		return userDao.deleteUser(id);
 	}

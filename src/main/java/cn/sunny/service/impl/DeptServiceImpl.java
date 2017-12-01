@@ -10,24 +10,39 @@ import cn.sunny.entity.Dept;
 import cn.sunny.service.DeptService;
 
 @Service
-public class DeptServiceImpl implements DeptService{
+public class DeptServiceImpl implements DeptService {
 
-	@Autowired
-	private DeptDao deptDao;
-	
-	@Override
-	public int insertDept(Dept dept) {
-		return deptDao.insertDept(dept);
-	}
+    @Autowired
+    private DeptDao deptDao;
 
-	@Override
-	public List<Dept> getDeptList() {
-		return deptDao.getDeptList();
-	}
+    @Override
+    public int insertDept(Dept dept) {
+        return deptDao.insertDept(dept);
+    }
 
-	@Override
-	public Dept getDept(Integer id) {
-		return deptDao.getDept(id);
-	}
+    @Override
+    public List<Dept> getDeptListByPage(Integer start, Integer size) {
+        return deptDao.getDeptListByPage(start, size);
+    }
+
+    @Override
+    public List<Dept> getDeptList() {
+        return deptDao.getDeptList();
+    }
+
+    @Override
+    public Dept getDept(Integer id) {
+        return deptDao.getDept(id);
+    }
+
+    @Override
+    public int getCount() {
+        return deptDao.getCount();
+    }
+
+    @Override
+    public int deleteDept(Integer id) {
+        return deptDao.deleteDept(id);
+    }
 
 }

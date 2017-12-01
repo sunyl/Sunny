@@ -10,10 +10,19 @@
     <insert id="insertDept" parameterType="cn.sunny.entity.Dept">
 		insert into dept(name,remark)values(#{name},#{remark})
 	</insert>
-    <select id="getDeptList" resultMap="DeptMap">
-		select id,name,remark from dept
+    <select id="getDeptListByPage" resultMap="DeptMap">
+		select id,name,remark from dept limit #{start},#{size}
 	</select>
+    <select id="getDeptList" resultMap="DeptMap">
+        select id,name,remark from dept
+    </select>
     <select id="getDept" parameterType="Integer" resultMap="DeptMap">
         select id,name,remark from dept where id=#{id}
     </select>
+    <select id="getCount" resultType="Integer">
+        select count(1) from dept
+    </select>
+    <delete id="deleteDept" parameterType="Integer">
+        delete from dept where id=#{id}
+    </delete>
 </mapper>
