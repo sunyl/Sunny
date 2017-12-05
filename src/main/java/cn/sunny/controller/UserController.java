@@ -44,7 +44,6 @@ public class UserController {
             modelView.addObject("error", "用户名或密码错误");
             return modelView;
         } else {
-
             HttpSession session = request.getSession();
             session.setAttribute("username", name);
             session.setMaxInactiveInterval(1800);

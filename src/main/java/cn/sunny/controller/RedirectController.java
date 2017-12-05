@@ -57,4 +57,8 @@ public class RedirectController {
 	public String employeeQuery(HttpServletRequest request) {
 		return "employee_query";
 	}
+	@RequestMapping("/redirect_fileUpload")
+	public String fileUpload(HttpServletRequest request) {
+		return "file_upload";
+	}
 }

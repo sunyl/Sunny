@@ -116,18 +116,23 @@
 					class="nav-link "> <span class="title">添加公告</span>
 				</a></li>
 			</ul></li>
-		<li class="nav-item  "><a href="javascript:;"
-			class="nav-link nav-toggle"> <i class="icon-briefcase"></i> <span
-				class="title">下载中心</span> <span class="arrow"></span>
-		</a>
+		<li class="nav-item  ">
+			<a href="javascript:;" class="nav-link nav-toggle"> <i class="icon-briefcase"></i>
+				<span class="title">下载中心</span> <span class="arrow"></span>
+			</a>
 			<ul class="sub-menu">
-				<li class="nav-item  "><a href="table_static_basic.html"
-					class="nav-link "> <span class="title">文档查询</span>
-				</a></li>
-				<li class="nav-item  "><a href="table_static_responsive.html"
-					class="nav-link "> <span class="title">上传文档</span>
-				</a></li>
-			</ul></li>
+				<li class="nav-item  ">
+					<a href="table_static_basic.html" class="nav-link ">
+						<span class="title">文档查询</span>
+					</a>
+				</li>
+				<li id="file_upload" class="nav-item  ">
+					<a href="/sunny/redirect_fileUpload" class="nav-link ">
+						<span class="title">上传文档</span>
+					</a>
+				</li>
+			</ul>
+		</li>
 
 	</ul>
 </div>
