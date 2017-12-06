@@ -57,8 +57,29 @@ public class RedirectController {
 	public String employeeQuery(HttpServletRequest request) {
 		return "employee_query";
 	}
+
+	@RequestMapping("/redirect_fileDownload")
+	public String fileDownLoad(HttpServletRequest request) {
+		return "file_download";
+	}
+
 	@RequestMapping("/redirect_fileUpload")
 	public String fileUpload(HttpServletRequest request) {
 		return "file_upload";
+	}
+
+	@RequestMapping("/redirect_noticeAdd")
+	public String noticeAdd(HttpServletRequest request) {
+		return "notice_add";
+	}
+
+	@RequestMapping("/redirect_noticeQuery")
+	public String noticeQuery(HttpServletRequest request) {
+		return "notice_query";
+	}
+
+	@RequestMapping("/redirect_modif_user_info")
+	public String modifUserInfo(HttpServletRequest request) {
+		return "modif_user_info";
 	}
 }

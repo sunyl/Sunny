@@ -1,9 +1,13 @@
 package cn.sunny.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class Notice implements Serializable {
+	@JsonIgnore
+	private Object handler;
 
 	private Integer id;
 	private String title;
@@ -54,6 +58,12 @@ public class Notice implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
+
+	public Object getHandler() {
+		return handler;
+	}
+
+	public void setHandler(Object handler) {
+		this.handler = handler;
+	}
 }

@@ -45,7 +45,7 @@ public class UserController {
             return modelView;
         } else {
             HttpSession session = request.getSession();
-            session.setAttribute("username", name);
+            session.setAttribute("user", user);
             session.setMaxInactiveInterval(1800);
             modelView.setViewName("redirect:/index");
             return modelView;

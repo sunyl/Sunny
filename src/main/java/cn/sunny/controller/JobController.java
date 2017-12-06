@@ -40,7 +40,7 @@ public class JobController {
         return new ModelAndView(new MappingJackson2JsonView(), map);
     }
 
-    @RequestMapping(value = "/getJobListByPage", produces = "application/json;charset=utf-8", method = RequestMethod.POST)
+    @RequestMapping(value = "/getJobListByPage", method = RequestMethod.POST)
     @ResponseBody
     public String getJobListByPage(HttpServletRequest request) {
         int draw = request.getParameter("draw") == null ? 1 : Integer.valueOf(request.getParameter("draw"));

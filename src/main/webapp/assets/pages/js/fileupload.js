@@ -32,3 +32,9 @@ function progressFunction(evt) {
         document.getElementById('progressBar').innerHTML = completePercent;
     }
 }
+
+
+
+function table_file() {
+    
+}

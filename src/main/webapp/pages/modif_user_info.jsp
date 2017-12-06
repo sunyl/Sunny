@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>上传文件</title>
+    <title>修改个人信息</title>
     <jsp:include page="base/commonmeta.jsp"/>
     <jsp:include page="base/commoncss.jsp"/>
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/pages/jquery/jquery-3.2.1.min.js"></script>
@@ -14,42 +14,46 @@
 </div>
 <div class="clearfix"></div>
 
-<!-- BEGIN CONTAINER -->
 <div class="page-container">
-    <!-- BEGIN SIDEBAR -->
     <div class="page-sidebar-wrapper">
         <jsp:include page="base/sidebar.jsp"/>
     </div>
-    <!-- END SIDEBAR -->
-    <!-- BEGIN CONTENT -->
+
     <div class="page-content-wrapper">
         <div class="page-content">
-            <div class="modal-body">
-                <div class="form-group" id="passwordDiv">
-                    <label>选择用户数据文件</label>
-                    <input class="form-control" type="file" id="file">
+            <div class="page-bar">
+                <ul class="page-breadcrumb">
+                    <li><a>个人中心</a> <i class="fa fa-circle"></i></li>
+                    <li><span>修改个人信息</span></li>
+                </ul>
+            </div>
+            <div class="row margin-top-20">
+                <label class="col-sm-1 control-label" for="title">登录名:</label>
+                <div class="col-sm-2">
+                    <input class="form-control input-sm" id="title" type="text" name="title"/>
                 </div>
-                <div class="progress progress-striped active">
-                    <div id="progressBar" class="progress-bar progress-bar-info" role="progressbar"
-                         aria-valuenow="0" aria-valuemax="100" aria-valuemin="0" style="width:0%;">0%
-                    </div>
+                <label class="col-sm-1 control-label" for="content">密码:</label>
+                <div class="col-sm-4">
+                    <input class="form-control input-sm" id="content" type="text" name="content"/>
                 </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-default" id="btnUpload" onclick="doUpload()">添加</button>
+            </div>
+
+            <div class="raw margin-top-20">
+                <div class="col-sm-offset-1">
+                    <button type="submit" class="btn btn-default" id="btn_submit">确认</button>
                 </div>
             </div>
         </div>
 
     </div>
 </div>
-<!-- END CONTAINER -->
+
 <jsp:include page="base/footer.jsp"/>
 <jsp:include page="base/commonjs.jsp"/>
-<script src="${pageContext.request.contextPath}/assets/pages/js/fileupload.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/assets/pages/js/table_user_list.js" type="text/javascript"></script>
 <script src="${pageContext.request.contextPath}/assets/pages/js/sidebar.js" type="text/javascript"></script>
 <script>
     $(document).ready(function () {
-        init_sidebar(5, 1);
     });
 </script>
 </body>

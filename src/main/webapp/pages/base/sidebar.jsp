@@ -104,29 +104,38 @@
 				</li>
 			</ul>
 		</li>
-		<li class="nav-item  "><a href="javascript:;"
-			class="nav-link nav-toggle"> <i class="icon-bulb"></i> <span
-				class="title">公告管理</span> <span class="arrow"></span>
-		</a>
-			<ul class="sub-menu">
-				<li class="nav-item  "><a href="elements_steps.html"
-					class="nav-link "> <span class="title">公告查询</span>
-				</a></li>
-				<li class="nav-item  "><a href="elements_lists.html"
-					class="nav-link "> <span class="title">添加公告</span>
-				</a></li>
-			</ul></li>
-		<li class="nav-item  ">
-			<a href="javascript:;" class="nav-link nav-toggle"> <i class="icon-briefcase"></i>
-				<span class="title">下载中心</span> <span class="arrow"></span>
+		<li id="notice-manager" class="nav-item">
+			<a href="javascript:;" class="nav-link nav-toggle">
+				<i class="icon-bulb"></i>
+				<span class="title">公告管理</span>
+				<span class="arrow"></span>
 			</a>
 			<ul class="sub-menu">
-				<li class="nav-item  ">
-					<a href="table_static_basic.html" class="nav-link ">
-						<span class="title">文档查询</span>
+				<li id="notice-query" class="nav-item  ">
+					<a href="/sunny/redirect_noticeQuery" class="nav-link ">
+						<span class="title">公告查询</span>
 					</a>
 				</li>
-				<li id="file_upload" class="nav-item  ">
+				<li id="notice-add" class="nav-item">
+					<a href="/sunny/redirect_noticeAdd" class="nav-link ">
+						<span class="title">添加公告</span>
+					</a>
+				</li>
+			</ul>
+		</li>
+		<li id="file-manager" class="nav-item">
+			<a href="javascript:;" class="nav-link nav-toggle">
+				<i class="icon-briefcase"></i>
+				<span class="title">下载中心</span>
+				<span class="arrow"></span>
+			</a>
+			<ul class="sub-menu">
+				<li id="file-download" class="nav-item  ">
+					<a href="/sunny/redirect_fileDownload" class="nav-link ">
+						<span class="title">文档下载</span>
+					</a>
+				</li>
+				<li id="file-upload" class="nav-item  ">
 					<a href="/sunny/redirect_fileUpload" class="nav-link ">
 						<span class="title">上传文档</span>
 					</a>
