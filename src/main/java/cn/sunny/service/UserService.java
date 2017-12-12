@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Param;
 
 public interface UserService {
 
+	User getUserById(Integer id);
+
 	List<User> getAllUser();
 
 	List<User> getUserListByPage(int start, int limit, String keyword);

@@ -18,7 +18,6 @@
     <div class="page-sidebar-wrapper">
         <jsp:include page="base/sidebar.jsp"/>
     </div>
-
     <div class="page-content-wrapper">
         <div class="page-content">
             <div class="page-bar">

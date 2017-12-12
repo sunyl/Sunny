@@ -27,17 +27,22 @@
                     <li><span>修改个人信息</span></li>
                 </ul>
             </div>
-            <div class="row margin-top-20">
-                <label class="col-sm-1 control-label" for="title">登录名:</label>
+            <div class="raw margin-top-20">
+                <label class="col-sm-1 control-label" for="user-name">用户名:</label>
                 <div class="col-sm-2">
-                    <input class="form-control input-sm" id="title" type="text" name="title"/>
+                    <input class="form-control input-sm" id="user-name" type="text" name="title"/>
                 </div>
-                <label class="col-sm-1 control-label" for="content">密码:</label>
-                <div class="col-sm-4">
-                    <input class="form-control input-sm" id="content" type="text" name="content"/>
+                <label class="col-sm-1 control-label" for="login-name">登录名:</label>
+                <div class="col-sm-2">
+                    <input class="form-control input-sm" id="login-name" type="text" name="title"/>
                 </div>
             </div>
-
+            <div class="raw margin-top-20">
+                <label class="col-sm-1 control-label" for="password">密码:</label>
+                <div class="col-sm-2">
+                    <input class="form-control input-sm" id="password" type="text" name="password"/>
+                </div>
+            </div>
             <div class="raw margin-top-20">
                 <div class="col-sm-offset-1">
                     <button type="submit" class="btn btn-default" id="btn_submit">确认</button>

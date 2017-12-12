@@ -29,7 +29,7 @@ function init_select() {
             //$('#job-combobox').selectpicker('refresh');
         },
         error: function (data) {
-            alert("初始化部门失败！");
+            alert("初始化部门失败!");
         }
     });
 }

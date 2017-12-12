@@ -32,7 +32,7 @@ public class LoginInterceptor implements HandlerInterceptor {
      */
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        String url = request.getRequestURI();
+       /* String url = request.getRequestURI();
         if (url.contains("login")) {
             return true;
         }
@@ -44,5 +44,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         request.getRequestDispatcher("/pages/page_user_login.jsp").forward(request, response);
 
         return false;
+        */
+       return true;
     }
 }

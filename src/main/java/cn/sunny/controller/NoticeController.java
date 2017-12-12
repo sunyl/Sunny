@@ -53,4 +53,13 @@ public class NoticeController {
         return JsonUtil.toJson(dataTable);
     }
 
+    @RequestMapping(value = "/getLastNotice", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Notice> getLastNotice(HttpServletRequest request) {
+        Notice notice = noticeService.getLastNotice();
+        if (notice == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(notice, HttpStatus.OK);
+    }
 }

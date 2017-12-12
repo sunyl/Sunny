@@ -10,6 +10,7 @@
         <result column="status" property="status" jdbcType="INTEGER" javaType="Integer"/>
         <result column="date" property="date" jdbcType="DATE" javaType="java.sql.Date"/>
     </resultMap>
+
     <select id="getUser" parameterType="Integer" resultMap="UserMap">
 		select id,user_name,login_name,password,status,date from user where id =#{id}
 	</select>

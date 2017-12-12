@@ -19,11 +19,11 @@ import redis.clients.jedis.Jedis;
 import java.util.*;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-context.xml"})
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = {"classpath:spring-context.xml"})
 public class TestMain {
 
-    private static Logger logger = Logger.getLogger(TestMain.class);
+    /*private static Logger logger = Logger.getLogger(TestMain.class);
 
     @Autowired
     private UserService userService;
@@ -114,5 +114,5 @@ public class TestMain {
         jedis.zadd("map2", map2);
         Set<String> sortset = jedis.zrevrange("map2", 0, 10);
         logger.info("Sortset:" + sortset);
-    }
+    }*/
 }
