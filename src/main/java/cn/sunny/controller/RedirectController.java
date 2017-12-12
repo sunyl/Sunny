@@ -82,4 +82,9 @@ public class RedirectController {
 	public String modifUserInfo(HttpServletRequest request) {
 		return "modif_user_info";
 	}
+
+	@RequestMapping("/home")
+	public String test(HttpServletRequest request) {
+		return "home";
+	}
 }

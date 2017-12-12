@@ -3,7 +3,7 @@
 <div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner" >
         <div class="page-logo">
-            <a href="index.html">
+            <a href="###" onclick="showAtRight('/sunny/home')">
                 <img src="${pageContext.request.contextPath}/assets/layouts/layout/img/logo.png" alt="logo" class="logo-default"/>
             </a>
             <div class="menu-toggler sidebar-toggler margin-top-30">
@@ -20,7 +20,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default">
                         <li>
-                            <a href="/sunny/redirect_modif_user_info"> <i class="icon-lock"></i>修改个人信息</a>
+                            <a href="###" onclick="showAtRight('/sunny/redirect_modif_user_info')"> <i class="icon-lock"></i>修改个人信息</a>
                         </li>
                         <li>
                             <a href="/sunny/user/logout"> <i class="icon-key"></i> 注销</a>

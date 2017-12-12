@@ -3,9 +3,10 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>首页</title>
+    <title>Sunny</title>
     <jsp:include page="base/commonmeta.jsp"/>
     <jsp:include page="base/commoncss.jsp"/>
+    <script src="${pageContext.request.contextPath}/assets/pages/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
 </head>
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 <div class="page-wrapper">
@@ -16,32 +17,12 @@
     <div class="page-sidebar-wrapper">
         <jsp:include page="base/sidebar.jsp"/>
     </div>
-    <div class="page-content-wrapper">
-        <div class="page-content">
-            <h2 id="title" class="text-center"></h2>
-            <p id="content" class="lead text-center"></p>
-            <p id="author" class="text-center"></p>
-        </div>
+    <div id="content" class="page-content-wrapper">
     </div>
 </div>
 <jsp:include page="base/footer.jsp"/>
 <jsp:include page="base/commonjs.jsp"/>
+<script src="${pageContext.request.contextPath}/assets/pages/js/common.js" type="text/javascript"></script>
 
-<script>
-    window.onload = function () {
-        $.ajax({
-            type: "GET",
-            url: "/sunny/notice/getLastNotice",
-            dataType: 'json',
-            success: function (data) {
-                $('#title').text(data.title);
-                $('#content').text(data.content);
-                $('#author').text(data.createDate + "  " + data.user.userName);
-            },
-            error: function (data) {
-            }
-        });
-    }
-</script>
 </body>
 </html>
